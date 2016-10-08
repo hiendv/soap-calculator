@@ -1,20 +1,22 @@
 var soap = require('soap')
 var url = 'http://localhost:8001/calculator?wsdl'
 
-soap.createClient(url, function (err, client) {
+soap.createClient(url, (err, client) => {
     if (err) throw err
 
     var service = client.describe().calculator.calculator
 
-    for (var operation in service) {
+    for (let operation in service) {
+        let a = Math.random() * 1000
+        let b = Math.random() * 2000
         client[operation]({
-            a: 1,
-            b: 2
-        }, function (error, response) {
+            a: a,
+            b: b
+        }, (error, response) => {
             if (error) {
                 throw error
             }
-            console.log(response)
+            console.log(a, operation, b, response)
         })
     }
 })
