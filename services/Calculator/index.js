@@ -1,5 +1,5 @@
 module.exports = {
-    calculator: {
+    soap: {
         add: function(args) {
             var a = parseFloat(args.a)
             var b = parseFloat(args.b)
@@ -9,7 +9,7 @@ module.exports = {
             }
         },
 
-        sub: function(args) {
+        subtract: function(args) {
             var a = parseFloat(args.a)
             var b = parseFloat(args.b)
 
@@ -30,6 +30,18 @@ module.exports = {
         divide: function(args) {
             var a = parseFloat(args.a)
             var b = parseFloat(args.b)
+
+            if (b === 0) {
+                throw {
+                    Fault: {
+                        Code: {
+                            Value: "soap:Sender",
+                            Subcode: { value: "rpc:BadArguments" }
+                        },
+                        Reason: { Text: "Division by zero" }
+                    }
+                }
+            }
 
             return {
                 result: a / b

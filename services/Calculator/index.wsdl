@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions
+    targetNamespace="http://localhost:8001/calculator?wsdl"
+    xmlns:tns="http://localhost:8001/calculator?wsdl"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <wsdl:documentation>
+        Service: Calculator
+        Version: 0.1.0
+    </wsdl:documentation>
+    <wsdl:types>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://localhost:8001/calculator?wsdl">
+            <xs:element name="add">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="1" maxOccurs="1" name="a" type="xs:float" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="b" type="xs:float" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="subtract">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="1" maxOccurs="1" name="a" type="xs:float" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="b" type="xs:float" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="multiply">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="1" maxOccurs="1" name="a" type="xs:float" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="b" type="xs:float" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="divide">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="1" maxOccurs="1" name="a" type="xs:float" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="b" type="xs:float" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="1" maxOccurs="1" name="result" type="xs:float" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="add">
+        <wsdl:part name="parameters" element="tns:add" />
+    </wsdl:message>
+    <wsdl:message name="subtract">
+        <wsdl:part name="parameters" element="tns:subtract" />
+    </wsdl:message>
+    <wsdl:message name="multiply">
+        <wsdl:part name="parameters" element="tns:multiply" />
+    </wsdl:message>
+    <wsdl:message name="divide">
+        <wsdl:part name="parameters" element="tns:divide" />
+    </wsdl:message>
+    <wsdl:message name="response">
+        <wsdl:part name="parameters" element="tns:response" />
+    </wsdl:message>
+    <wsdl:portType name="CalculatorInterface">
+        <wsdl:documentation>Manipulations of two floats</wsdl:documentation>
+        <wsdl:operation name="add">
+            <wsdl:input message="tns:add" />
+            <wsdl:output message="tns:response" />
+        </wsdl:operation>
+        <wsdl:operation name="subtract">
+            <wsdl:input message="tns:subtract" />
+            <wsdl:output message="tns:response" />
+        </wsdl:operation>
+        <wsdl:operation name="multiply">
+            <wsdl:input message="tns:multiply" />
+            <wsdl:output message="tns:response" />
+        </wsdl:operation>
+        <wsdl:operation name="divide">
+            <wsdl:input message="tns:divide" />
+            <wsdl:output message="tns:response" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CalculatorImplementation" type="tns:CalculatorInterface">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="add">
+            <soap:operation soapAction="add" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="subtract">
+            <soap:operation soapAction="subtract" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="multiply">
+            <soap:operation soapAction="multiply" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="divide">
+            <soap:operation soapAction="divide" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Calculator">
+        <wsdl:port name="soap" binding="tns:CalculatorImplementation">
+            <soap:address location="http://localhost:8001/calculator?wsdl" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
