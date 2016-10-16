@@ -1,15 +1,20 @@
 {
-  "name": "soap-server",
+  "name": "soap-calculator",
   "version": "0.1.0",
-  "description": "SOAP web service: A calculator",
+  "description": "A SOAP calculator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js src",
     "server": "node server.js"
   },
   "author": "Hien Dao Vinh <hien.dv.neo@gmail.com> (http://hiendv.me)",
   "license": "ISC",
   "dependencies": {
     "soap": "^0.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.0",
+    "eslint-config-google": "^0.6.0"
   }
 }
