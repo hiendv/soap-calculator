@@ -24,6 +24,6 @@ config.services.every((name) => {
     service.handler[name] = require(service.path)
     console.log('Service loaded: ' + name)
 
-    soap.listen(server, '/' + name, service.handler, service.xml)
+    soap.listen(server, '/' + name.toLowerCase(), service.handler, service.xml)
     console.log('SOAP Server: ' + uri + '/' + name)
 })
