@@ -12,6 +12,9 @@
   "author": "Hien Dao Vinh <hien.dv.neo@gmail.com> (http://hiendv.me)",
   "license": "ISC",
   "private": true,
+  "engines": {
+    "node": ">=6"
+  },
   "dependencies": {
     "soap": "^0.17.0"
   },
