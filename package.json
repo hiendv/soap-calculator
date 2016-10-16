@@ -5,16 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js --exec 'npm run lint'",
     "lint": "eslint --ext .js src",
-    "server": "node server.js"
+    "serve": "node src/server.js"
   },
   "author": "Hien Dao Vinh <hien.dv.neo@gmail.com> (http://hiendv.me)",
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "soap": "^0.17.0"
   },
   "devDependencies": {
     "eslint": "^3.8.0",
-    "eslint-config-google": "^0.6.0"
+    "eslint-config-google": "^0.6.0",
+    "nodemon": "^1.11.0"
   }
 }
